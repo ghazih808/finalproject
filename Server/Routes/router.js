@@ -7,13 +7,17 @@ const mysqlConnection = require('../Database/connection');
 
 
 route.get('/', (req, res) => {
-    res.render('login',{msg:""});
+	res.render('abc');
 })
-route.get('/abc', (req, res) => {
+route.get('/login', (req, res) => {
 	
-    res.render('abc');
+   
+	res.render('login',{msg:""});
 })
-
+route.get('/new_account', (req, res) => {
+	
+    res.render('new_account',{msg:""});
+})
 // http://localhost:3000/
 route.post('/', function(request, response) {
 	// Capture the input fields
