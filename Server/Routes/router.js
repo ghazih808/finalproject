@@ -4,11 +4,27 @@ const express = require('express');
 const route = express.Router();
 const mysqlConnection = require('../Database/connection');
 
+const bodyParser = require("body-parser");
+//const cookieParser = require("cookie-parser");
+//const session = require('express-session');
+const multer = require("multer");
+//const Auth = require("../middleware/auth.js");
+//const functions = require("../controllers/index");
+//images storage
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) { cb(null, "./public/images") },
+    filename: function (req, file, cb) { cb(null, file.originalname) }
+})
+const upload = multer({ storage: storage });
+//for getting data from encrypted sent data
+route.use(bodyParser.urlencoded({ extended: false }));
+route.use(bodyParser.json());
 
 
 route.get('/', (req, res) => {
 	res.render('abc');
 })
+
 route.get('/login', (req, res) => {
 	
    
@@ -18,7 +34,10 @@ route.get('/new_account', (req, res) => {
 	
     res.render('new_account',{msg:""});
 })
-// http://localhost:3000/
+route.get('/contact', (req, res) => {
+	
+    res.render('contact_us',{msg:""});
+})
 route.post('/', function(request, response) {
 	// Capture the input fields
 	let username = request.body.username;
@@ -31,7 +50,7 @@ route.post('/', function(request, response) {
 			if (error) throw error;
 			// If the account exists
 			if (results.length > 0) {
-				response.redirect('/abc');
+				response.redirect('/');
 			} else {
 				response.render('login',{msg:"Incorrect Username and/or Password!",success:false})
 				// response.redirect('/');
