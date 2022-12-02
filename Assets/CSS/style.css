@@ -1,3 +1,6 @@
+
+/* nav bar */
+
 *{
   padding:0;
   margin:0;
@@ -97,6 +100,11 @@ nav ul.show{
 }
 
 }
+
+
+/* nav bar */
+
+
 
 .box-form {
   position: center;
@@ -201,19 +209,21 @@ nav ul.show{
 .box-form .right h5 {
   font-size: 6vmax;
   line-height: 0;
-  
+color: purple;
 }
 
 .box-form .right p {
   font-size: 14px;
-  color: #5670a3;
+  color: black;
 }
 
 .box-form .right .inputs {
   overflow: hidden;
+  
 }
 
-.box-form .right input {
+
+.inputs input{
   width: 100%;
   padding: 10px;
   margin-top: 25px;
@@ -227,12 +237,16 @@ nav ul.show{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-decoration: none;
+
 }
 
 .box-form .right .remember-me--forget-password input {
   margin: 0;
   margin-right: 7px;
   width: auto;
+  text-decoration: none;
+
 }
 
 .box-form .right button {
@@ -250,17 +264,19 @@ nav ul.show{
 }
 /* Customize the label (the container) */
 .abc {
-  display: block;
+  
   position: relative;
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 15px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+
+/* custom checkbox */
 
 /* Hide the browser's default checkbox */
 .abc input {
@@ -276,8 +292,8 @@ nav ul.show{
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   background-color: #eee;
 }
 
@@ -288,7 +304,7 @@ nav ul.show{
 
 /* When the checkbox is checked, add a blue background */
 .abc input:checked ~ .text-checkbox {
-  background-color: #2196F3;
+  background-color: purple;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -314,4 +330,12 @@ nav ul.show{
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+/* custom checkbox */
+
+.right a {
+  color: purple;
+  text-decoration: none;
+  outline: none;
 }

@@ -30,9 +30,9 @@ route.get('/login', (req, res) => {
    
 	res.render('login',{msg:""});
 })
-route.get('/new_account', (req, res) => {
+route.get('/signup', (req, res) => {
 	
-    res.render('new_account',{msg:""});
+    res.render('signup',{msg:""});
 })
 route.get('/contact', (req, res) => {
 	
@@ -83,9 +83,7 @@ route.post('/', function(request, response) {
 				response.redirect('/');
 			} else {
 				response.render('login',{msg:"Incorrect Username and/or Password!",success:false})
-				// response.redirect('/');
-
-				// response.send('Incorrect Username and/or Password!');
+			
 
 			}			
 			response.end();

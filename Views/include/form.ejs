@@ -6,7 +6,6 @@
                 <p>Make your payments smoothly</p>
                 <span>
                     <p>Login with social media</p>
-                    <a href="#" class="google"><i class="fa fa-google" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                 </span>
@@ -16,24 +15,28 @@
 
         <div class="right">
             <h5>Login</h5><br><br><br>
-            <p>Don't have an account? <a href="new_account">Creat Your Account</a> it takes less than a minute</p>
+            <p>Don't have an account? <a href="signup">Creat Your Account</a> it takes less than a minute</p>
             <div class="inputs">
                 <input type="text" placeholder="User name" name="username" id="username">
                 <br>
-                <input type="password" placeholder="Password" name="password" id="password"><br>
+                <input type="password" placeholder="Password" name="password" id="password"><br><br>
             </div>
             <div id="signIn-Role">
-                <Span id="role" >Login As : </Span>
-                <input type='radio' name='role' value='admin' checked><Span id="role1" >Admin</Span> 
-                <input type='radio' name='role' value='user'><Span id="role1" >User</Span> 
+                <Span id="role">Login As : </Span>
+                <input type='radio' name='role' value='admin'>
+                <Span id="role1">Admin</Span>
+                <input type='radio' name='role' value='user'>
+                <Span id="role1">User</Span><br><br>
             </div>
-            <div class="remember-me--forget-password">
-                <label class="abc">Remember me
-                    <input type="checkbox" name="item"  />
+            <div>
+                 <label class="abc">Remember me
+                    <input type="checkbox" name="item" />
                     <span class="text-checkbox"></span>
                 </label>
-                <a href="#">Forgot Password?</a>
             </div>
+            
+                <a href="#">Forgot Password?</a>
+           
 
             <br>
             <button type="submit">Login</button>
