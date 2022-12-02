@@ -339,3 +339,24 @@ color: purple;
   text-decoration: none;
   outline: none;
 }
+
+.about-me-card {
+  width: 18.75rem;
+  margin-top: 2.625rem;
+  padding-top: 3rem;
+  padding-left: 1.375rem;
+  padding-right: 1.375rem;
+}
+
+
+
+.about-me-card img {
+    border-radius: 50%;
+    height: 84px;
+    width: 84px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-color: #fff;
+    border-width: 4px;
+    margin-right: 0.75rem;
+}

@@ -20,6 +20,13 @@ const upload = multer({ storage: storage });
 route.use(bodyParser.urlencoded({ extended: false }));
 route.use(bodyParser.json());
 
+route.get('/forgot-password', (req, res) => {
+	res.render('forgotpass');
+})
+route.get('/about', (req, res) => {
+	res.render('about');
+})
+
 
 route.get('/', (req, res) => {
 	res.render('home');
