@@ -3,7 +3,27 @@ const { request, query } = require('express');
 const express = require('express');
 const route = express.Router();
 const mysqlConnection = require('../Database/connection');
-
+var nodemailer=require('nodemailer');
+ 
+let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.email",
+    service: "gmail",
+    auth: {
+      user: "webkaproject1@gmail.com",
+      pass: "nkqopokebwrljmfo",
+    },
+  });
+let code='12345678';
+  let mail = transporter.sendMail({
+	from: '"EasySplit" <webkaproject1@gmail>',
+	//to: `${Email}`,
+	to:'shahzaibvirk70@gmail.com',
+	subject: "EasySplit SignUp Code",
+	text: "Hello world?",
+	html: `<h1>Verification Code For EasySplit!</h1>
+		   <p><b>Your Requested Code is : ${code}</b></p>`
+});
+  
 const bodyParser = require("body-parser");
 //const cookieParser = require("cookie-parser");
 //const session = require('express-session');
