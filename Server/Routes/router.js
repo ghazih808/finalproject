@@ -23,7 +23,87 @@ let code='12345678';
 	html: `<h1>Verification Code For EasySplit!</h1>
 		   <p><b>Your Requested Code is : ${code}</b></p>`
 });
-  
+const forgotpass=(req, res) => {
+    const Email = req.body.email;
+    const user = {Email:Email};
+    //req.session.newUser = user;
+
+    const code = "12asc542@";
+
+    //req.session.code = code;
+
+    let mail = transporter.sendMail({
+        from: '"EasySplit" <webkaproject1@gmail>',
+        to: `${Email}`,
+        subject: "EasySplit SignUp Code",
+        text: "Hello world?",
+        html: `<h1>Verification Code For EasySplit!</h1>
+               <p><b>Your Requested Code is : ${code}</b></p>`
+    });
+    res.redirect("/codeverify");
+}
+
+/*
+const codeverification=(req, res) => {
+    const Code = req.body.code;
+    if (Code == "12asc542@") {
+		res.send(" Verification Code!\n");
+       // res.redirect(307,"/RegisterUser");
+    }
+    else {
+        //req.session.code = null;
+        res.send("Wrong Verification Code!\n");
+    }
+
+
+}*/
+
+const codeverification=(req,res)=>
+{
+    const username = req.body.username;
+    const code1 = req.body.code;
+    const password = req.body.password;
+    const user = {UserName:username,Password:password};
+   // req.session.newUser = user;
+
+     const code = "12asc542@";
+
+   // req.session.code = code;
+    const Query = `SELECT * from user2 WHERE username = '${username}'`;
+    mysqlConnection.query(Query, function (err, result, fields) {
+        if (err) throw err;
+        if (result.length > 0) {
+            if (code1!=code){
+                res.send('Invalid Verification Code')
+            }
+        
+            else{
+                const Query1 = `UPDATE user2 SET password = '${password}' WHERE username = '${username}'`;
+                mysqlConnection.query(Query1, function (err, result) {
+                    if (err) throw err;
+                    res.redirect("/login");
+                })
+            }
+           
+        }
+        else{
+            res.send('Wrong details')
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 const bodyParser = require("body-parser");
 //const cookieParser = require("cookie-parser");
 //const session = require('express-session');
@@ -43,6 +123,12 @@ route.use(bodyParser.json());
 route.get('/forgot-password', (req, res) => {
 	res.render('forgotpass');
 })
+route.get('/codeverify', (req, res) => {
+	res.render('codeverify');
+})
+route.post("/forgot-password",forgotpass);
+route.post("/codeverify",codeverification );
+
 route.get('/about', (req, res) => {
 	res.render('about');
 })
