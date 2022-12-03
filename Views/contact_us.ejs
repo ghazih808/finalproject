@@ -1,125 +1,216 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>EasySplit</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="CSS/contact.css">
-        <style>
 
-        body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-        .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-        .fa-anchor,.fa-coffee {font-size:200px}
-        </style>
-        </head>
+<head>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="CSS/contact.css">
+ 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EasySplit</title>
+  <!-- ======= Styles ====== -->
+  <link rel="stylesheet" href="/CSS/mainHome.css">
+
+   <style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Lato", sans-serif
+    }
+
+    .w3-bar,
+    h1,
+    button {
+      font-family: "Montserrat", sans-serif
+    }
+
+    .fa-anchor,
+    .fa-coffee {
+      font-size: 200px
+    }
+  </style>
+</head>
+
 <body>
+  <!-- =============== Navigation ================ -->
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="logo-usd"></ion-icon>
+            </span>
+            <span class="title">EasySplit</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/home">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Home</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/dashboard">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/about">
+            <span class="icon">
+              <ion-icon name="information-circle-outline"></ion-icon>
+            </span>
+            <span class="title">About</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/contact">
+            <span class="icon">
+              <ion-icon name="help-outline"></ion-icon>
+            </span>
+            <span class="title">Contact Us</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/login">
+            <span class="icon">
+              <ion-icon name="log-in-outline"></ion-icon>
+            </span>
+            <span class="title">Login</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="settings-outline"></ion-icon>
+            </span>
+            <span class="title">Settings</span>
+          </a>
+        </li>
 
 
-        <!-- Navbar -->
-        <div class="w3-top">
-          <div class="w3-bar w3-purple w3-card w3-left-align w3-large">
-            <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-purple" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-            <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
-            <a href="/about" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
-            <a href="/contact" class="w3-bar-item w3-button w3-hide-small  w3-white w3-padding-large ">Contact Us</a>
-            <a href="/login" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a>
-            <a href="/new_account" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">SignUp</a>
-          </div>
-        
-          <!-- Navbar on small screens -->
-          <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-            <a href="/about" class="w3-bar-item w3-button w3-padding-large">About</a>
-            <a href="/contact" class="w3-bar-item w3-button w3-padding-large">Contact Us</a>
-            <a href="/login" class="w3-bar-item w3-button w3-padding-large">Login</a>
-            <a href="/new_account" class="w3-bar-item w3-button w3-padding-large">SignUp</a>
-          </div>
-        </div>
-        
+
+      </ul>
+    </div>
+
+  </div>
+<!-- ========================= Main ==================== -->
+<div class="main">
+  <div class="topbar">
+    <div class="toggle">
+      <ion-icon name="menu-outline"></ion-icon>
+    </div>
+
+  </div>
+
+  <div>
+    
 
 
-    <div class="container">
-        <header>
-            <br><br><br>
-            <br><br>
-            <h1><b><u>Contact Us</u></b></h1><style>h1{
-                color: #171617;
-            }</style>
-        </header>
-        <div class="content">
-            <div class="content-form">
-                <section>
-                    <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
-                    <h3>address</h3>
-                    <p>
-                        Fast CFD, Sargodha Road <br>
-                        Looneywala, Chiniot 
-                    </p>
-                </section>
-
-                <section>
-                    <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
-                    <h3>Phone</h3>
-                    <p>123-456-78901548</p>
-                </section>
-
-                <section>
-                    <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
-                    <h3>E-mail</h3>
-                    <p>EasySplit@gmail.com</p>
-                </section>
-            </div>
-        </div>
-
-      <form>
-        <div class="form">
-            <div class="right">
-              <div class="contact-form">
-                  <input type="text" required>
-                  <span>Full Name</span>
-              </div>
-  
-              <div class="contact-form">
-                  <input type="E-mail" required>
-                  <span>E-mail Id</span>
-              </div>
-              <div class="contact-form">
-                  <textarea name="text">
-                    
-                  </textarea>
-                  <span> Type your Message....</span>
-              </div>
-  
-              <div class="contact-form">
-                  <input type="submit" name="submit">
-              </div>
-              </div>
-            </div>
-          </div>
-    </form>
-        <div class="media">
-            <li><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></li>
-            <li><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></li>
-            <li><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i></li>
-            <li><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></li>
-        </div>
-        <div class="empty">
-
-        </div>
-    </div>  
-    <script>
-        // Used to toggle the menu on small screens when clicking on the menu button
-        function myFunction() {
-          var x = document.getElementById("navDemo");
-          if (x.className.indexOf("w3-show") == -1) {
-            x.className += " w3-show";
-          } else { 
-            x.className = x.className.replace(" w3-show", "");
-          }
+  <div >
+    <header>
+      <br><br><br>
+      <br><br>
+      <h1><b><u>Contact Us</u></b></h1>
+      <style>
+        h1 {
+          color: #171617;
         }
-        </script>  
+      </style>
+    </header>
+    <div class="content">
+      <div>
+        <section>
+          <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+          <h3>address</h3>
+          <p>
+            Fast CFD, Sargodha Road <br>
+            Looneywala, Chiniot
+          </p>
+        </section>
+
+        <section>
+          <i class="fa fa-phone fa-2x" aria-hidden="true"></i>
+          <h3>Phone</h3>
+          <p>123-456-78901548</p>
+        </section>
+
+        <section>
+          <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+          <h3>E-mail</h3>
+          <p>EasySplit@gmail.com</p>
+        </section>
+      </div>
+    </div>
+
+    <form>
+      <div class="form">
+        <div class="right">
+          <div class="contact-form">
+            <input type="text" required>
+            <span>Full Name</span>
+          </div>
+
+          <div class="contact-form">
+            <input type="E-mail" required>
+            <span>E-mail Id</span>
+          </div>
+          <div class="contact-form">
+            <textarea name="text">
+
+                  </textarea>
+            <span> Type your Message....</span>
+          </div>
+
+          <div class="contact-form">
+            <input type="submit" name="submit">
+          </div>
+        </div>
+      </div>
+  </div>
+  </form>
+  <div class="media">
+    <li><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></li>
+    <li><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></li>
+    <li><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i></li>
+    <li><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></li>
+  </div>
+  <div class="empty">
+
+  </div>
+  </div>
+  
+
+  </div>
+  <!-- =========== Scripts =========  -->
+  <script src="/JS/mainHome.js"></script>
+
+  <!-- ====== ionicons ======= -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
