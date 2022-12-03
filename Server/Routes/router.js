@@ -13,16 +13,7 @@ let transporter = nodemailer.createTransport({
       pass: "nkqopokebwrljmfo",
     },
   });
-let code='12345678';
-  let mail = transporter.sendMail({
-	from: '"EasySplit" <webkaproject1@gmail>',
-	//to: `${Email}`,
-	to:'shahzaibvirk70@gmail.com',
-	subject: "EasySplit SignUp Code",
-	text: "Hello world?",
-	html: `<h1>Verification Code For EasySplit!</h1>
-		   <p><b>Your Requested Code is : ${code}</b></p>`
-});
+
 const forgotpass=(req, res) => {
     const Email = req.body.email;
     const user = {Email:Email};
