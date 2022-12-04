@@ -11,7 +11,7 @@ const multer = require("multer");
 
 //images storage
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) { cb(null, "./Assets/Img") },
+    destination: function (req, file, cb) { cb(null, "./CSS/Img") },
     filename: function (req, file, cb) { cb(null, file.originalname) }
 })
 const upload = multer({ storage: storage });
@@ -86,6 +86,10 @@ route.get('/forgot-password', (req, res) => {
 })
 route.get('/feedback', (req, res) => {
 	res.render('feedback');
+})
+
+route.get('/addexpense', (req, res) => {
+	res.render('addexpense');
 })
 
 route.get('/codeverify', (req, res) => {

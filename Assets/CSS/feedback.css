@@ -1,95 +1,137 @@
-
-  .rating {
-    display: inline-block;
-    font-size: 0;
-    position: relative;
-    text-transform: capitalize;
-    padding: 0 110px 8%;
-    color: rgb(10, 10, 10);
-  }
-    
-  .feedback  label {
-    float: right;
-    padding: 0;
-    font-size: 50px;
-    cursor: pointer;
-  }   
-  .feedback  label::before {
-    content: "\2606";
-    padding-bottom: 8px;
-    display: inline-block;
-    transition: 0.2s;
-  } 
-  .feedback span {
-    opacity: 0;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    height: 20px;
-    font-size: 1rem;
-    white-space: nowrap;
-    transition: 0.15s ease-out;
-    pointer-events: none;
-    letter-spacing: -2px;
-    transform: translateY(-50%);
-  } 
-  .feedback label:hover span {
-    opacity: 1;
-    transform: none;
-    letter-spacing: 0;
-  }
-  .feedback input:checked ~ label::before {
-    content: "\2605";
-    color: orange;
-    filter: drop-shadow(0 0 4px);
-    transform: rotate(.2turn);
-    transition-delay: calc(0.1 * attr(data-idx integer));
-  }
-  .feedback .wrapper{
-    width:450px;
-    background: #fff;
-    border-radius: 5px;
-    padding: 5px 5px 7px;
-  }
-  .feedback .wrapper h2{
-    color: #111112;
-    font-size: 28px;
-    text-align: center;
-  }
-  .feedback .wrapper textarea{
-    width: 70%;
-    height: 50px;
-    padding-left:15px;
-    outline: none;
-    resize: none;
-    font-size: 16px;
-    margin-top: 20px;
-    border-radius: 5px;
-    border-color: #bfbfbf;
-    max-height: 250px;
-  }
-  .feedback textarea:is(:focus,:valid)
-{
-    border-width: 2px;
-    padding: 14px;
-    border-color:#4671EA;
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-.feedback .wrapper .form-control{
-    width: 40%;
-    height: 20px;
-    padding:15px;
-    outline: none;
-    resize: none;
-    font-size: 16px;
-    margin-top: 20px;
-    border-radius: 5px;
-    border-color: #bfbfbf;
+.abcc {
+  height: 100%;
+  place-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);
 }
-.feedback .form-control:is(:focus,:valid)
-{
-    border-width: 2px;
-    padding: 14px;
-    border-color:#4671EA;
+.containerr {
+  position: relative;
+  width: 400px;
+  background:linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);
+  padding: 20px 30px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  flex-direction: column;
+}
+.containerr .post{
+  display: none;
+}
+.containerr .text{
+  font-size: 25px;
+  color: #666;
+  font-weight: 500;
+}
+.containerr .edit{
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+  cursor: pointer;
+}
+.containerr .edit:hover{
+  text-decoration: underline;
+}
+.containerr .star-widget input{
+  display: none;
+}
+.star-widget label{
+  font-size: 40px;
+  color: #444;
+  padding: 10px;
+  float: right;
+  transition: all 0.2s ease;
+}
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+  color: #fd4;
+}
+input:checked ~ label{
+  color: #fd4;
+}
+input#rate-5:checked ~ label{
+  color: #fe7;
+  text-shadow: 0 0 20px #952;
+}
+#rate-1:checked ~ form header:before{
+  content: "I just hate it ";
+}
+#rate-2:checked ~ form header:before{
+  content: "I don't like it ";
+}
+#rate-3:checked ~ form header:before{
+  content: "It is awesome ";
+}
+#rate-4:checked ~ form header:before{
+  content: "I just like it ";
+}
+#rate-5:checked ~ form header:before{
+  content: "I just love it ";
+}
+.containerr form{
+  display: none;
+}
+input:checked ~ form{
+  display: block;
+}
+form header{
+  width: 100%;
+  font-size: 25px;
+  color: #fe7;
+  font-weight: 500;
+  margin: 5px 0 20px 0;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+form .textarea{
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+form .textarea textarea{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #eee;
+  border: 1px solid #333;
+  background: #222;
+  padding: 10px;
+  font-size: 17px;
+  resize: none;
+}
+.textarea textarea:focus{
+  border-color: #444;
+}
+form .btn{
+  height: 45px;
+  width: 100%;
+  margin: 15px 0;
+}
+form .btn button{
+  height: 100%;
+  width: 100%;
+  border: 1px solid #444;
+  outline: none;
+  background: #222;
+  color: #999;
+  font-size: 17px;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+form .btn button:hover{
+  background: #1b1b1b;
 }
