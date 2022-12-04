@@ -114,14 +114,16 @@ route.use(bodyParser.json());
 route.get('/forgot-password', (req, res) => {
 	res.render('forgotpass');
 })
-<<<<<<< HEAD
-=======
+route.get('/feedback', (req, res) => {
+	res.render('feedback');
+})
+
 route.get('/codeverify', (req, res) => {
 	res.render('codeverify');
 })
 route.post("/forgot-password",forgotpass);
 route.post("/codeverify",codeverification );
->>>>>>> cce0c29bdf77430339a5bc9fc92a4d04adf2a4a0
+
 
 route.get('/about', (req, res) => {
 	res.render('about');
