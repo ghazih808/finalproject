@@ -1,45 +1,144 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <%- include('include/header') %>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasySplit</title>
-    <link rel="stylesheet" href="CSS/feedback.css">
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="/CSS/mainHome.css">
+    <link rel="stylesheet" href="/CSS/feedback.css">
+
+
+
 </head>
+
 <body>
-    <div class="wrapper">
-        <h2>Rate Us</h2>
-    <div class="rating">
-      <input type='radio' hidden name='rate' id='rating-opt5' data-idx='0'>	
-      <label for='rating-opt5'><span>Very satisfied</span></label>
- 
-      <input type='radio' hidden name='rate' id='rating-opt4' data-idx='1'>
-      <label for='rating-opt4'><span>Somewhat satisfied</span></label>
- 
-      <input type='radio' hidden name='rate' id='rating-opt3' data-idx='2'>
-      <label for='rating-opt3'><span>Neutral</span></label>
- 
-      <input type='radio' hidden name='rate' id='rating-opt2' data-idx='3'>
-      <label for='rating-opt2'><span>Dissatisfied</span></label>
- 
-      <input type='radio' hidden name='rate' id='rating-opt1' data-idx='4'>
-      <label for='rating-opt1'><span>Very Dissatisfied</span></label>
+  <!-- =============== Navigation ================ -->
+  <div class="container">
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="logo-usd"></ion-icon>
+                    </span>
+                    <span class="title">EasySplit</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/home">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="title">Home</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/dashboard">
+                    <span class="icon">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/about">
+                    <span class="icon">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                    </span>
+                    <span class="title">About</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/contact">
+                    <span class="icon">
+                        <ion-icon name="help-outline"></ion-icon>
+                                            </span>
+                    <span class="title">Contact Us</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/login">
+                    <span class="icon">
+                        <ion-icon name="log-in-outline"></ion-icon>
+                    </span>
+                    <span class="title">Login</span>
+                </a>
+            </li>
+            <li>
+                <a href="/feedback">
+                    <span class="icon">
+                        <ion-icon name="chatbubbles"></ion-icon>
+                    </span>
+                    <span class="title">Feedback</span>
+                </a>
+            </li>
+
+
+
+        </ul>
     </div>
-   <br>
-    
-    <div class="form-group">
-        <div class="input-group">
-          <input id="username" name="username" placeholder="username" class="form-control"  type="input">
-          <textarea placeholder="Type your feedback" required></textarea>
-          
+
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+      <div class="topbar">
+        <div class="toggle">
+          <ion-icon name="menu-outline"></ion-icon>
         </div>
+
       </div>
+<body class="feedback">
+      <div>
+        <div class="wrapper">
+          <h2>Rate Us</h2>
+      <div class="rating">
+        <input type='radio' hidden name='rate' id='rating-opt5' data-idx='0'>	
+        <label for='rating-opt5'><span>Very satisfied</span></label>
+   
+        <input type='radio' hidden name='rate' id='rating-opt4' data-idx='1'>
+        <label for='rating-opt4'><span>Somewhat satisfied</span></label>
+   
+        <input type='radio' hidden name='rate' id='rating-opt3' data-idx='2'>
+        <label for='rating-opt3'><span>Neutral</span></label>
+   
+        <input type='radio' hidden name='rate' id='rating-opt2' data-idx='3'>
+        <label for='rating-opt2'><span>Dissatisfied</span></label>
+   
+        <input type='radio' hidden name='rate' id='rating-opt1' data-idx='4'>
+        <label for='rating-opt1'><span>Very Dissatisfied</span></label>
+      </div>
+     <br>
+      
       <div class="form-group">
-        <input name="feedback" class="btn btn-lg btn-primary btn-block" value="Send Feedback" type="submit">
+          <div class="input-group">
+            <input id="username" name="username" placeholder="username" class="form-control"  type="input">
+            <textarea placeholder="Type your feedback" required></textarea>
+            
+          </div>
+        </div>
+        <div class="form-group">
+          <input name="feedback" class="btn btn-lg btn-primary btn-block" value="Send Feedback" type="submit">
+        </div>
+  </div>
+
       </div>
-</div>
-<script>
+    </body>
+      <!-- =========== Scripts =========  -->
+      <script src="/JS/mainHome.js"></script>
+
+      
+  <script>
     const textarea= document.querySelector("textarea");
     textarea.addEventListener("keyup",e=>{
         textarea.style.height="63px";
@@ -47,6 +146,9 @@
         textarea.style.height=`${scHeight}px`;
     });
 </script>
-
+      <!-- ====== ionicons ======= -->
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
