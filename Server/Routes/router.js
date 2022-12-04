@@ -4,7 +4,21 @@ const express = require('express');
 const route = express.Router();
 const mysqlConnection = require('../Database/connection');
 var nodemailer=require('nodemailer');
- 
+
+const bodyParser = require("body-parser");
+
+const multer = require("multer");
+
+//images storage
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) { cb(null, "./Assets/Img") },
+    filename: function (req, file, cb) { cb(null, file.originalname) }
+})
+const upload = multer({ storage: storage });
+//for getting data from encrypted sent data
+route.use(bodyParser.urlencoded({ extended: false }));
+route.use(bodyParser.json());
+
 let transporter = nodemailer.createTransport({
     host: "smtp.gmail.email",
     service: "gmail",
@@ -33,22 +47,6 @@ const forgotpass=(req, res) => {
     });
     res.redirect("/codeverify");
 }
-
-/*
-const codeverification=(req, res) => {
-    const Code = req.body.code;
-    if (Code == "12asc542@") {
-		res.send(" Verification Code!\n");
-       // res.redirect(307,"/RegisterUser");
-    }
-    else {
-        //req.session.code = null;
-        res.send("Wrong Verification Code!\n");
-    }
-
-
-}*/
-
 const codeverification=(req,res)=>
 {
     const username = req.body.username;
@@ -60,7 +58,7 @@ const codeverification=(req,res)=>
      const code = "12asc542@";
 
    // req.session.code = code;
-    const Query = `SELECT * from user2 WHERE username = '${username}'`;
+    const Query = `SELECT * from user WHERE username = '${username}'`;
     mysqlConnection.query(Query, function (err, result, fields) {
         if (err) throw err;
         if (result.length > 0) {
@@ -69,7 +67,7 @@ const codeverification=(req,res)=>
             }
         
             else{
-                const Query1 = `UPDATE user2 SET password = '${password}' WHERE username = '${username}'`;
+                const Query1 = `UPDATE user SET password = '${password}' WHERE username = '${username}'`;
                 mysqlConnection.query(Query1, function (err, result) {
                     if (err) throw err;
                     res.redirect("/login");
@@ -82,34 +80,6 @@ const codeverification=(req,res)=>
         }
     })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-const bodyParser = require("body-parser");
-//const cookieParser = require("cookie-parser");
-//const session = require('express-session');
-const multer = require("multer");
-//const Auth = require("../middleware/auth.js");
-//const functions = require("../controllers/index");
-//images storage
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) { cb(null, "./Assests/img") },
-    filename: function (req, file, cb) { cb(null, file.originalname) }
-})
-const upload = multer({ storage: storage });
-//for getting data from encrypted sent data
-route.use(bodyParser.urlencoded({ extended: false }));
-route.use(bodyParser.json());
 
 route.get('/forgot-password', (req, res) => {
 	res.render('forgotpass');
@@ -150,15 +120,34 @@ route.get('/signup', (req, res) => {
     res.render('signup');
 })
 
+
+
+route.post("/signup",upload.single("img"),(req,res)=>{
+   
+
+    const pid = req.body.user_id;
+    const Name = req.body.username;
+    const password = req.body.password;
+    const City = req.body.city;
+    const img = req.file.originalname;
+//console.log(img);
+    const Query = `INSERT INTO user  (user_id, username,password,profile,City) VALUES ('${pid}','${Name}','${password}','${img}','${City}' )`;
+    mysqlConnection.query(Query, function (err, result) {
+        if (err) throw err;
+        res.redirect("/userview");
+    })
+});
 route.get('/contact', (req, res) => {
 	
     res.render('contact_us');
 })
 
 
+
+
 route.get('/userview', (req, res) => {
 	
-	const dataCountQuery = "SELECT COUNT(*) FROM users";
+	const dataCountQuery = "SELECT COUNT(*) FROM user";
     mysqlConnection.query(dataCountQuery, function (err, result) {
         if (err) throw err;
 
@@ -170,7 +159,7 @@ route.get('/userview', (req, res) => {
 
         // console.log(dataCount, "\n", pageNo, "\n",dataPerPages, "\n",startLimit, "\n",totalPages, "\n");
 
-        const Query = `SELECT * FROM users LIMIT ${startLimit}, ${dataPerPages}`;
+        const Query = `SELECT * FROM user LIMIT ${startLimit}, ${dataPerPages}`;
         mysqlConnection.query(Query, function (err, result) {
             if (err) throw err;
             // res.send(result);
@@ -193,7 +182,7 @@ route.post('/', function(request, response) {
 	// Ensure the input fields exists and are not empty
 	if (username && password) {
 		// Execute SQL query that'll select the account from the database based on the specified username and password
-		mysqlConnection.query('SELECT * FROM easysplit_users WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+		mysqlConnection.query('SELECT * FROM user WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
 			// If there is an issue with the query, output the error
 			if (error) throw error;
 			// If the account exists
