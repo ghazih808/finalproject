@@ -8,10 +8,10 @@ var nodemailer=require('nodemailer');
 const bodyParser = require("body-parser");
 
 const multer = require("multer");
-
+let host_id;
 //images storage
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) { cb(null, "./CSS/Img") },
+    destination: function (req, file, cb) { cb(null, "./Assets/Img") },
     filename: function (req, file, cb) { cb(null, file.originalname) }
 })
 const upload = multer({ storage: storage });
@@ -91,7 +91,23 @@ route.get('/feedback', (req, res) => {
 route.get('/addexpense', (req, res) => {
 	res.render('addexpense');
 })
-
+route.get('/addfriend', (req, res) => {
+	res.render('addfriend');
+})
+route.post('/addfriend',upload.single("img"),(req,res)=>
+{
+    
+    const H_id=req.body.id;
+     const img = req.file.originalname;
+     console.log(img);
+    const Name = req.body.name;
+    const city=req.body.city;
+    const Query = `INSERT INTO friend (Host_id,name,city,image) VALUES ('${H_id}','${Name}','${city}','${img}')`;
+    mysqlConnection.query(Query, function (err, result) {
+        if (err) throw err;
+        res.redirect("/dashboard");
+    })
+})
 route.get('/codeverify', (req, res) => {
 	res.render('codeverify');
 })
@@ -108,7 +124,23 @@ route.get('/home', (req, res) => {
 })
 
 route.get('/dashboard', (req, res) => {
-	res.render('dashboard');
+    
+    let query="select * from expense where Host_id='"+host_id+"';";
+    let query2="select * from friend where Host_id='"+host_id+"';";
+
+    mysqlConnection.query(query,(err,result)=>{
+        if (err) throw err;
+        // res.render('dashboard',{item:result});
+
+   
+    mysqlConnection.query(query2,(err,result2)=>{
+        console.log(result2);
+        if (err) throw err;
+        res.render('dashboard',{data:result2,item:result});
+
+    })
+})
+	// res.render('dashboard');
 })
 
 route.get('/', (req, res) => {
@@ -183,6 +215,7 @@ route.post('/', function(request, response) {
 	// Capture the input fields
 	let username = request.body.username;
 	let password = request.body.password;
+    
 	// Ensure the input fields exists and are not empty
 	if (username && password) {
 		// Execute SQL query that'll select the account from the database based on the specified username and password
@@ -191,6 +224,7 @@ route.post('/', function(request, response) {
 			if (error) throw error;
 			// If the account exists
 			if (results.length > 0) {
+                host_id=results[0].user_id;
 				response.redirect('/dashboard');
 			} else {
 				response.render('login',{success:false})

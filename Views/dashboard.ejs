@@ -158,63 +158,20 @@
                                 <td>Status</td>
                             </tr>
                         </thead>
+                        <% item.forEach(function(item){ %>
 
                         <tbody>
                             <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
+                                <td><%= item.name %></td>
+                                <td><%= item.amount %></td>
+                                <td><%=item.status%></td>
+                                <!-- <td><span class="status delivered">Delivered</span></td> -->
                             </tr>
+                        </tbody>
 
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
+                            <% }); %>
 
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
+                          
                         </tbody>
                     </table>
                 </div>
@@ -224,18 +181,20 @@
                     <div class="cardHeader">
                         <h2>Friends</h2>
                     </div>
+                    <% data.forEach(function(data){ %>
 
                     <table>
                         <tr>
                             <td width="60px">
-                                <div class="imgBx"><img src="/Img/pic.jpg" alt=""></div>
+                                <div class="imgBx"><img src="/Img/<%= data.image%> " alt=""></div>
                             </td>
                             <td>
-                                <h4>David <br> <span>Italy</span></h4>
+                                <h4><%= data.name%> <br> <span><%= data.city%></span></h4>
                             </td>
                         </tr>
+                        <% }); %>
 
-                        <tr>
+                        <!-- <tr>
                             <td width="60px">
                                 <div class="imgBx"><img src="/Img/pic.jpg" alt=""></div>
                             </td>
@@ -296,7 +255,7 @@
                             <td>
                                 <h4>Amit <br> <span>India</span></h4>
                             </td>
-                        </tr>
+                        </tr> -->
                     </table>
                 </div>
             </div>

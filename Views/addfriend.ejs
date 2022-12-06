@@ -107,39 +107,31 @@
                  <div class="panel-body">
                    <div class="text-center">
                      <h3><i class="fa fa-plus fa-4x"></i></h3>
-                     <h2 class="text-center">Add Expense</h2>
+                     <h2 class="text-center">Add Friend</h2>
                      <p>Enter details here!</p>
                      <div class="panel-body">
        
-                       <form  class="form"  action="/addexpense" method="post">
+                       <form  class="form"  action="/addfriend" enctype="multipart/form-data" method="post">
        
                          <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil color-blue"></i></span>
+                                <input id="id" name="id" placeholder="Host ID" class="form-control"  type="text">
+                              </div>
                            <div class="input-group">
                              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                             <input id="id" name="id" placeholder="Enter Host ID" class="form-control"  type="text">
-                           </div>
+                             <input id="name" name="name" placeholder="Name" class="form-control"  type="text">
+                            </div>
                            <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-pencil color-blue"></i></span>
-                            <input id="name" name="name" placeholder="Name" class="form-control"  type="text">
+                            <input id="city" name="city" placeholder="City" class="form-control"  type="text">
                           </div>
                           <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-usd color-blue"></i></span>
-                            <input id="amount" name="amount" placeholder="amount" class="form-control"  type="number">
+                            <input class="file-input" name="img"  type="file"  > 
+
                           </div>
-                          <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-usd color-blue"></i></span>
-                            <input id="status" name="status" placeholder="Status" class="form-control"  type="text">
-                          </div>
-                          <div class="input-group">
-                            <span class="input-group-addon">Split: </i></span>
-                            <input id="split" name="split" placeholder="Equally"   type="radio">
-                            <span> Equally<br></span>
-                            <input id="split" name="split" placeholder="Equally"   type="radio">
-                            <span> By Exact Amount<br></span>
-                            <input id="split" name="split" placeholder="Equally"   type="radio">
-                            <span> By Percentage</span>
-                          
-                        </div>
+                         
                          </div>
                          <div class="form-group">
                            <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Submit" type="submit" >

@@ -282,6 +282,7 @@ body {
 .details .cardHeader {
   display: flex;
   justify-content: space-between;
+
   align-items: flex-start;
 }
 .cardHeader h2 {
