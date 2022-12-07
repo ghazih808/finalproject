@@ -7,7 +7,7 @@ var nodemailer=require('nodemailer');
 // const functions = require("../controllers/index");
 const bodyParser = require("body-parser");
 const multer = require("multer");
-let host_id,host_name,host_img;
+let host_id,host_name,host_img,log;
 //images storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) { cb(null, "./Assets/Img") },
@@ -319,6 +319,7 @@ route.post('/', function(request, response) {
                 host_id=results[0].user_id;
                 host_name=results[0].username;
                 img=results[0].image;
+                log=true;
                 response.redirect("/dashboard");
             }}
             else {
