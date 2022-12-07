@@ -283,7 +283,10 @@ route.post('/', function(request, response) {
 	// Capture the input fields
 	let username = request.body.username;
 	let password = request.body.password;
-    
+    const Role = request.body.role;
+
+    let TableName = "";
+    Role == "admin" ? TableName = "ADMIN" : TableName = "user";
 	// Ensure the input fields exists and are not empty
 	if (username && password) {
 		// Execute SQL query that'll select the account from the database based on the specified username and password
@@ -292,12 +295,20 @@ route.post('/', function(request, response) {
 			if (error) throw error;
 			// If the account exists
 			if (results.length > 0) {
+                if (Role == "admin") {
                 host_id=results[0].user_id;
                 host_name=results[0].username;
                 img=results[0].image;
 
-				response.redirect('/dashboard');
-			} else {
+				response.redirect('/addexpense');
+			} 
+            else if (Role == "user") {
+                host_id=results[0].user_id;
+                host_name=results[0].username;
+                img=results[0].image;
+                response.redirect("/dashboard");
+            }}
+            else {
 				response.render('login',{success:false})
 			
 
