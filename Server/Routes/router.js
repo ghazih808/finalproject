@@ -83,6 +83,9 @@ const codeverification=(req,res)=>
 route.get('/forgot-password', (req, res) => {
 	res.render('forgotpass');
 })
+route.get('/', (req, res) => {
+	res.render('home');
+})
 route.get('/feedback', (req, res) => {
 	res.render('feedback');
 })
