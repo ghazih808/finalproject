@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('include/header') %>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasySplit</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="/CSS/mainHome.css">
+
+</head>
+
+<body>
+  <!-- =============== Navigation ================ -->
+  <div class="container">
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="logo-usd"></ion-icon>
+                    </span>
+                    <span class="title">EasySplit</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/home">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="title">Home</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/dashboard">
+                    <span class="icon">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/about">
+                    <span class="icon">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                    </span>
+                    <span class="title">About</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/contact">
+                    <span class="icon">
+                        <ion-icon name="help-outline"></ion-icon>
+                                            </span>
+                    <span class="title">Contact Us</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/login">
+                    <span class="icon">
+                        <ion-icon name="log-in-outline"></ion-icon>
+                    </span>
+                    <span class="title">Login</span>
+                </a>
+            </li>
+            <li>
+                <a href="/feedback">
+                    <span class="icon">
+                        <ion-icon name="chatbubbles"></ion-icon>
+                    </span>
+                    <span class="title">Feedback</span>
+                </a>
+            </li>
+
+
+
+        </ul>
+    </div>
+
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+      <div class="topbar">
+        <div class="toggle">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
+
+      </div>
+
+   <div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <div class="form-gap"><br><br><br><br></div>
+   <div class="container">
+       <div class="row">
+           <div class="col-md-4 col-md-offset-4">
+               <div class="panel panel-default">
+                 <div class="panel-body">
+                   <div class="text-center">
+                     <h3><i class="fa fa-plus fa-4x"></i></h3>
+                     <h2 class="text-center">Add Money</h2>
+                     <p>Enter details here!</p>
+                     <div class="panel-body">
+       
+                       <form  class="form"  action="/addexpense" method="post">
+       
+                         <div class="form-group">
+                           <div class="input-group">
+                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                             <input id="id" name="id" placeholder="Enter Host ID" class="form-control"  type="text">
+                           </div>
+                           <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil color-blue"></i></span>
+                            <input id="name" name="name" placeholder="Name" class="form-control"  type="text">
+                          </div>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-usd color-blue"></i></span>
+                            <input id="amount" name="amount" placeholder="amount" class="form-control"  type="number">
+                          </div>
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-usd color-blue"></i></span>
+                            <input id="status" name="status" placeholder="Status" class="form-control"  type="text">
+                          </div>
+                         </div>
+                         <div class="form-group">
+                           <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Submit" type="submit" >
+                         </div>
+                         
+                         <input type="hidden" class="hide" name="token" id="token" value=""> 
+                       </form>
+       
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+       </div>
+   </div>
+   
+
+   </div>
+
+
+
+      <!-- =========== Scripts =========  -->
+      <script src="/JS/mainHome.js"></script>
+
+      <!-- ====== ionicons ======= -->
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

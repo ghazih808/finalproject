@@ -8,7 +8,7 @@ var nodemailer=require('nodemailer');
 const bodyParser = require("body-parser");
 
 const multer = require("multer");
-let host_id,host_name;
+let host_id,host_name,host_img;
 //images storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) { cb(null, "./Assets/Img") },
@@ -169,21 +169,27 @@ route.get('/dashboard', (req, res) => {
     
     let query="select * from expense where Host_id='"+host_id+"';";
     let query2="select * from friend where Host_id='"+host_id+"';";
+    let query3="select profile from user where user_id='"+host_id+"';";
 
     mysqlConnection.query(query,(err,result)=>{
         if (err) throw err;
         // res.render('dashboard',{item:result});
 
-   
-    mysqlConnection.query(query2,(err,result2)=>{
-        console.log(result2);
-        if (err) throw err;
-        res.render('dashboard',{data:result2,item:result});
-
+        mysqlConnection.query(query2,(err,result2)=>{
+            console.log(result2);
+            if (err) throw err;
+            mysqlConnection.query(query3,(err,result3)=>{
+                console.log(result2);
+                if (err) throw err;
+                
+            res.render('dashboard',{data:result2,item:result,data2:result3});
+            })
+    
+        })
     })
 })
 	// res.render('dashboard');
-})
+
 
 route.get('/', (req, res) => {
 	res.render('home');
@@ -268,6 +274,8 @@ route.post('/', function(request, response) {
 			if (results.length > 0) {
                 host_id=results[0].user_id;
                 host_name=results[0].username;
+                img=results[0].image;
+
 				response.redirect('/dashboard');
 			} else {
 				response.render('login',{success:false})
