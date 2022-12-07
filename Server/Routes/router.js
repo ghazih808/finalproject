@@ -215,9 +215,9 @@ route.get('/dashboard', (req, res) => {
 	// res.render('dashboard');
 
 
-route.get('/', (req, res) => {
-	res.render('home');
-})
+// route.get('/', (req, res) => {
+// 	res.render('home');
+// })
 
 route.get('/login', (req, res) => {
 	res.render('login');
