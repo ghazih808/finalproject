@@ -165,7 +165,7 @@ route.get('/dashboard', (req, res) => {
     mysqlConnection.query(query2,(err,result2)=>{
         console.log(result2);
         if (err) throw err;
-        res.render('/dashboard',{data:result2,item:result});
+        res.render('dashboard',{data:result2,item:result});
 
     })
 })
