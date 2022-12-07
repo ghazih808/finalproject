@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EasySplit</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="/CSS/mainHome.css">
+    <link rel="stylesheet" href="/CSS/allkhata.css">
 </head>
 
 <body>
@@ -97,49 +97,11 @@
 
             </div>
 
-            <!-- ======================= Cards ================== -->
-            <div class="cardBox">
-               <div class="feature">
-                <div class="card">
-                    <a href="/addexpense"></a>
-                    <div>
-                        <div class="numbers">Add an expense</div>
-                        
-                    </div>
-
-                  
-                </div>
-            </div>
-
-            <div class="feature">
-                <div class="card">
-                    <a href="/settleup"></a>
-                    <div>
-                        <div class="numbers">Settle Up</div>
-                    </div>
-
-                   
-                </div>
-            </div>
-
-            <div class="feature">
-                <div class="card">
-                    <a href="/addfriend"></a>
-                    <div>
-                        <div class="numbers">Add Friend</div>
-                    </div>
-
-                   
-                </div>
-            </div>
-        </div>
+       
             <!-- ================ Khata Details List ================= -->
             <div class="details">
                 <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Expenses</h2>
-                        <a href="/allkhata" class="btn">View All</a>
-                    </div>
+                   
 
                     <table>
                         <thead>
@@ -157,7 +119,6 @@
                                 <td><%= item.name %></td>
                                 <td><%= item.amount %></td>
                                 <td><%=item.status%></td>
-                                <!-- <td><span class="status delivered">Delivered</span></td> -->
                             </tr>
                         </tbody>
 
@@ -168,26 +129,7 @@
                     </table>
                 </div>
 
-                <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Friends</h2>
-                    </div>
-                    <% data.forEach(function(data){ %>
-
-                    <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="/Img/<%= data.image%> " alt=""></div>
-                            </td>
-                            <td>
-                                <h4><%= data.name%> <br> <span><%= data.city%></span></h4>
-                            </td>
-                        </tr>
-                        <% }); %>
-                    </table>
                 </div>
-            </div>
         </div>
     </div>
 

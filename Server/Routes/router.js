@@ -156,7 +156,27 @@ route.get('/codeverify', (req, res) => {
 route.post("/forgot-password",forgotpass);
 route.post("/codeverify",codeverification );
 
+route.post('/allkhata', (req, res) => {
+	res.render('allkhata');
+})
+route.get('/allkhata', (req, res) => {
+    
+    let query="select * from expense where Host_id='"+host_id+"';";
+    let query3="select profile from user where user_id='"+host_id+"';";
 
+    mysqlConnection.query(query,(err,result)=>{
+        if (err) throw err;
+        // res.render('dashboard',{item:result});
+
+            mysqlConnection.query(query3,(err,result3)=>{
+                console.log(result3);
+                if (err) throw err;
+
+            res.render('allkhata',{item:result,data2:result3});
+            })
+    
+        })
+ })
 route.get('/about', (req, res) => {
 	res.render('about');
 })
@@ -181,7 +201,7 @@ route.get('/dashboard', (req, res) => {
             mysqlConnection.query(query3,(err,result3)=>{
                 console.log(result2);
                 if (err) throw err;
-                
+
             res.render('dashboard',{data:result2,item:result,data2:result3});
             })
     
