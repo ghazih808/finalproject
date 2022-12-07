@@ -256,7 +256,7 @@ route.get('/adminview', (req, res) => {
 })
 route.get('/adminhome', (req, res) => {
 	
-    res.render('adminhome');
+    res.send('adminhome');
 })
 
 
