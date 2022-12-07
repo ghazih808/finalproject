@@ -246,7 +246,14 @@ route.get('/contact', (req, res) => {
     res.render('contact_us');
 })
 
-
+route.get('/adminview', (req, res) => {
+	
+    res.render('adminview');
+})
+route.get('/adminhome', (req, res) => {
+	
+    res.render('adminhome');
+})
 
 
 route.get('/userview', (req, res) => {
@@ -300,7 +307,7 @@ route.post('/', function(request, response) {
                 host_name=results[0].username;
                 img=results[0].image;
 
-				response.redirect('/addexpense');
+				response.redirect('/adminview');
 			} 
             else if (Role == "user") {
                 host_id=results[0].user_id;
