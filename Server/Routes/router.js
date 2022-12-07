@@ -95,6 +95,7 @@ route.post('/feedback',(req,res)=>
     const rating=3;
     const feedbacks=req.body.comment;
     const Query = `INSERT INTO feedback (Host_id,name,rating,feedback) VALUES ('${H_id}','${Name}','${rating}','${feedbacks}')`;
+    console.log('Query');
     mysqlConnection.query(Query, function (err, result) {
         if (err) throw err;
         res.redirect("/dashboard");
@@ -112,7 +113,8 @@ route.post('/settleup',(req,res)=>
     const H_id=req.body.id;
     const Name = req.body.name;
     const status=req.body.status;
-    const Query = `UPDATE expense SET status = "paid" WHERE name = '${Name}' AND Host_id='${H_id}'`;
+    const Query = `UPDATE expense SET status = '${status}' WHERE name = '${Name}' AND Host_id='${H_id}'`;
+    console.log(Query);
     mysqlConnection.query(Query, function (err, result) {
         if (err) throw err;
         res.redirect("/dashboard");
