@@ -17,4 +17,4 @@ app.use('/JS',express.static(path.resolve(__dirname,"assets/JS")))
 app.use('/',require('./Server/Routes/router'))
 
 
-app.listen(process.env.PORT || 3002, () => { console.log(`Server is running on http://localhost:${3002}`) });
+app.listen($PORT || 3002, () => { console.log(`Server is running on http://localhost:${3002}`) });
