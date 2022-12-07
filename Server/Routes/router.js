@@ -4,7 +4,7 @@ const express = require('express');
 const route = express.Router();
 const mysqlConnection = require('../Database/connection');
 var nodemailer=require('nodemailer');
-const functions = require("../controllers/index");
+// const functions = require("../controllers/index");
 const bodyParser = require("body-parser");
 
 const multer = require("multer");
