@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path= require('path');
 var bodyParser = require('body-parser');
-app.set('view engine','ejs');
+// app.set('view engine','ejs');
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -15,7 +15,7 @@ app.use('/Img',express.static(path.resolve(__dirname,"assets/Img")))
 app.use('/JS',express.static(path.resolve(__dirname,"assets/JS")))
 
 //load routers
-app.use('/home',require('./Server/Routes/router'))
+app.use('/',require('./Server/Routes/router'))
 
 
 app.listen(process.env.PORT ||3002 , () => { console.log(`Server is running on http://localhost:${3002}`) });
