@@ -91,6 +91,21 @@ route.get('/feedback', (req, res) => {
 route.get('/addexpense', (req, res) => {
 	res.render('addexpense');
 })
+route.get('/settleup', (req, res) => {
+	res.render('settleup');
+})
+route.post('/settleup',(req,res)=>
+{
+    
+    const H_id=req.body.id;
+    const Name = req.body.name;
+    const status=req.body.status;
+    const Query = `UPDATE expense SET status = "paid" WHERE name = '${Name}' AND Host_id='${H_id}'`;
+    mysqlConnection.query(Query, function (err, result) {
+        if (err) throw err;
+        res.redirect("/dashboard");
+    })
+})
 route.get('/addfriend', (req, res) => {
 	res.render('addfriend');
 })
