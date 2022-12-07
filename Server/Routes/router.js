@@ -81,7 +81,7 @@ const codeverification=(req,res)=>
 }
 
 route.get('/forgot-password', (req, res) => {
-	res.render('forgotpass');
+	res.render('../Views/forgotpass');
 })
 route.get('/', (req, res) => {
 	res.render('../Views/home');
@@ -104,10 +104,10 @@ route.post('/feedback',(req,res)=>
     })
 })
 route.get('/addexpense', (req, res) => {
-	res.render('addexpense');
+	res.render('../Views/addexpense');
 })
 route.get('/settleup', (req, res) => {
-	res.render('settleup');
+	res.render('../Views/settleup');
 })
 route.post('/settleup',(req,res)=>
 {
@@ -123,11 +123,11 @@ route.post('/settleup',(req,res)=>
     })
 })
 route.get('/addfriend', (req, res) => {
-	res.render('addfriend');
+	res.render('../Views/addfriend');
 })
 
 route.get('/adminreview', (req, res) => {
-	res.render('adminreview');
+	res.render('../Views/adminreview');
 })
 route.post('/addexpense',(req,res)=>
 {
@@ -157,13 +157,13 @@ route.post('/addfriend',upload.single("img"),(req,res)=>
     })
 })
 route.get('/codeverify', (req, res) => {
-	res.render('codeverify');
+	res.render('../Views/codeverify');
 })
 route.post("/forgot-password",forgotpass);
 route.post("/codeverify",codeverification );
 
 route.post('/allkhata', (req, res) => {
-	res.render('allkhata');
+	res.render('../Views/allkhata');
 })
 route.get('/allkhata', (req, res) => {
     
@@ -184,11 +184,11 @@ route.get('/allkhata', (req, res) => {
         })
  })
 route.get('/about', (req, res) => {
-	res.render('about');
+	res.render('../Views/about');
 })
 
 route.get('/home', (req, res) => {
-	res.render('home');
+	res.render('../Views/home');
 })
 
 route.get('/dashboard', (req, res) => {
@@ -222,12 +222,12 @@ route.get('/dashboard', (req, res) => {
 // })
 
 route.get('/login', (req, res) => {
-	res.render('login');
+	res.render('../Views/login');
 })
 
 route.get('/signup', (req, res) => {
 	
-    res.render('signup');
+    res.render('../Views/signup');
 })
 
 
@@ -249,16 +249,16 @@ route.post("/signup",upload.single("img"),(req,res)=>{
 });
 route.get('/contact', (req, res) => {
 	
-    res.render('contact_us');
+    res.render('../Views/contact_us');
 })
 
 route.get('/adminview', (req, res) => {
 	
-    res.render('adminview');
+    res.render('../Views/adminview');
 })
 route.get('/adminhome', (req, res) => {
 	
-    res.render('adminhome');
+    res.render('../Views/adminhome');
 })
 
 
