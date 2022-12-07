@@ -123,6 +123,10 @@ route.post('/settleup',(req,res)=>
 route.get('/addfriend', (req, res) => {
 	res.render('addfriend');
 })
+
+route.get('/adminreview', (req, res) => {
+	res.render('adminreview');
+})
 route.post('/addexpense',(req,res)=>
 {
     
