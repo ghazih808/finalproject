@@ -8,7 +8,7 @@ var nodemailer=require('nodemailer');
 const bodyParser = require("body-parser");
 
 const multer = require("multer");
-let host_id;
+let host_id,host_name;
 //images storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) { cb(null, "./Assets/Img") },
@@ -87,7 +87,19 @@ route.get('/forgot-password', (req, res) => {
 route.get('/feedback', (req, res) => {
 	res.render('feedback');
 })
-
+route.post('/feedback',(req,res)=>
+{
+    
+    const H_id=host_id;
+    const Name = host_name;
+    const rating=3;
+    const feedbacks=req.body.comment;
+    const Query = `INSERT INTO feedback (Host_id,name,rating,feedback) VALUES ('${H_id}','${Name}','${rating}','${feedbacks}')`;
+    mysqlConnection.query(Query, function (err, result) {
+        if (err) throw err;
+        res.redirect("/dashboard");
+    })
+})
 route.get('/addexpense', (req, res) => {
 	res.render('addexpense');
 })
@@ -128,7 +140,6 @@ route.post('/addfriend',upload.single("img"),(req,res)=>
     
     const H_id=req.body.id;
      const img = req.file.originalname;
-     console.log(img);
     const Name = req.body.name;
     const city=req.body.city;
     const Query = `INSERT INTO friend (Host_id,name,city,image) VALUES ('${H_id}','${Name}','${city}','${img}')`;
@@ -254,6 +265,7 @@ route.post('/', function(request, response) {
 			// If the account exists
 			if (results.length > 0) {
                 host_id=results[0].user_id;
+                host_name=results[0].username;
 				response.redirect('/dashboard');
 			} else {
 				response.render('login',{success:false})
