@@ -44,7 +44,7 @@ const forgotpass=(req, res) => {
         html: `<h1>Verification Code For EasySplit!</h1>
                <p><b>Your Requested Code is : ${code}</b></p>`
     });
-    res.redirect("/codeverify");
+    res.redirect("/../Views/codeverify");
 }
 const codeverification=(req,res)=>
 {
@@ -69,7 +69,7 @@ const codeverification=(req,res)=>
                 const Query1 = `UPDATE user SET password = '${password}' WHERE username = '${username}'`;
                 mysqlConnection.query(Query1, function (err, result) {
                     if (err) throw err;
-                    res.redirect("/login");
+                    res.redirect("/../Views/login");
                 })
             }
            
@@ -100,7 +100,7 @@ route.post('/feedback',(req,res)=>
     console.log('Query');
     mysqlConnection.query(Query, function (err, result) {
         if (err) throw err;
-        res.redirect("/dashboard");
+        res.redirect("/../Views/dashboard");
     })
 })
 route.get('/addexpense', (req, res) => {
@@ -119,7 +119,7 @@ route.post('/settleup',(req,res)=>
     console.log(Query);
     mysqlConnection.query(Query, function (err, result) {
         if (err) throw err;
-        res.redirect("/dashboard");
+        res.redirect("/../Views/dashboard");
     })
 })
 route.get('/addfriend', (req, res) => {
@@ -140,7 +140,7 @@ route.post('/addexpense',(req,res)=>
     const Query = `INSERT INTO expense (Host_id,name,amount,status) VALUES ('${H_id}','${Name}','${amount}','${status}')`;
     mysqlConnection.query(Query, function (err, result) {
         if (err) throw err;
-        res.redirect("/dashboard");
+        res.redirect("/../Views/dashboard");
     })
 })
 route.post('/addfriend',upload.single("img"),(req,res)=>
@@ -153,7 +153,7 @@ route.post('/addfriend',upload.single("img"),(req,res)=>
     const Query = `INSERT INTO friend (Host_id,name,city,image) VALUES ('${H_id}','${Name}','${city}','${img}')`;
     mysqlConnection.query(Query, function (err, result) {
         if (err) throw err;
-        res.redirect("/dashboard");
+        res.redirect("/../Views/dashboard");
     })
 })
 route.get('/codeverify', (req, res) => {
@@ -178,7 +178,7 @@ route.get('/allkhata', (req, res) => {
                 console.log(result3);
                 if (err) throw err;
 
-            res.render('allkhata',{item:result,data2:result3});
+            res.render('../Views/allkhata',{item:result,data2:result3});
             })
     
         })
@@ -208,7 +208,7 @@ route.get('/dashboard', (req, res) => {
                 console.log(result2);
                 if (err) throw err;
 
-            res.render('dashboard',{data:result2,item:result,data2:result3});
+            res.render('../Views/dashboard',{data:result2,item:result,data2:result3});
             })
     
         })
@@ -244,7 +244,7 @@ route.post("/signup",upload.single("img"),(req,res)=>{
     const Query = `INSERT INTO user  (user_id, username,password,profile,City) VALUES ('${pid}','${Name}','${password}','${img}','${City}' )`;
     mysqlConnection.query(Query, function (err, result) {
         if (err) throw err;
-        res.redirect("/userview");
+        res.redirect("/../Views/userview");
     })
 });
 route.get('/contact', (req, res) => {
@@ -280,7 +280,7 @@ route.get('/userview', (req, res) => {
         mysqlConnection.query(Query, function (err, result) {
             if (err) throw err;
             // res.send(result);
-            res.render("userview",
+            res.render("../Views/userview",
                 {
                     item: result,
                     pages: totalPages,
@@ -313,23 +313,23 @@ route.post('/', function(request, response) {
                 host_name=results[0].username;
                 img=results[0].image;
 
-				response.redirect('/adminview');
+				response.redirect('/../Views/adminview');
 			} 
             else if (Role == "user") {
                 host_id=results[0].user_id;
                 host_name=results[0].username;
                 img=results[0].image;
-                response.redirect("/dashboard");
+                response.redirect("/../Views/dashboard");
             }}
             else {
-				response.render('login',{success:false})
+				response.render('../Views/login',{success:false})
 			
 
 			}			
 			response.end();
 		});
 	} else {
-				response.render('login',{success:false})
+				response.render('../Views/login',{success:false})
 		response.end();
 	}
 });
