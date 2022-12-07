@@ -84,10 +84,10 @@ route.get('/forgot-password', (req, res) => {
 	res.render('forgotpass');
 })
 route.get('/', (req, res) => {
-	res.render('home');
+	res.render('../Views/home');
 })
 route.get('/feedback', (req, res) => {
-	res.render('feedback');
+	res.render('../Views/feedback');
 })
 route.post('/feedback',(req,res)=>
 {
