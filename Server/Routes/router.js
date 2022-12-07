@@ -94,6 +94,20 @@ route.get('/addexpense', (req, res) => {
 route.get('/addfriend', (req, res) => {
 	res.render('addfriend');
 })
+route.post('/addexpense',(req,res)=>
+{
+    
+    const H_id=req.body.id;
+    const Name = req.body.name;
+    const amount=req.body.amount;
+    const status=req.body.status;
+
+    const Query = `INSERT INTO expense (Host_id,name,amount,status) VALUES ('${H_id}','${Name}','${amount}','${status}')`;
+    mysqlConnection.query(Query, function (err, result) {
+        if (err) throw err;
+        res.redirect("/dashboard");
+    })
+})
 route.post('/addfriend',upload.single("img"),(req,res)=>
 {
     
