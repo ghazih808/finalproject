@@ -4,11 +4,10 @@ const express = require('express');
 const route = express.Router();
 const mysqlConnection = require('../Database/connection');
 var nodemailer=require('nodemailer');
-
+// const functions = require("../controllers/index");
 const bodyParser = require("body-parser");
-
 const multer = require("multer");
-let host_id,host_name,host_img;
+let host_id,host_name,host_img,log;
 //images storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) { cb(null, "./Assets/Img") },
@@ -82,10 +81,13 @@ const codeverification=(req,res)=>
 }
 
 route.get('/forgot-password', (req, res) => {
-	res.render('forgotpass');
+	res.render('../Views/forgotpass');
+})
+route.get('/', (req, res) => {
+	res.render('../Views/home');
 })
 route.get('/feedback', (req, res) => {
-	res.render('feedback');
+	res.render('../Views/feedback');
 })
 route.post('/feedback',(req,res)=>
 {
@@ -102,10 +104,10 @@ route.post('/feedback',(req,res)=>
     })
 })
 route.get('/addexpense', (req, res) => {
-	res.render('addexpense');
+	res.render('../Views/addexpense');
 })
 route.get('/settleup', (req, res) => {
-	res.render('settleup');
+	res.render('../Views/settleup');
 })
 route.post('/settleup',(req,res)=>
 {
@@ -121,11 +123,11 @@ route.post('/settleup',(req,res)=>
     })
 })
 route.get('/addfriend', (req, res) => {
-	res.render('addfriend');
+	res.render('../Views/addfriend');
 })
 
 route.get('/adminreview', (req, res) => {
-	res.render('adminreview');
+	res.render('../Views/adminreview');
 })
 route.post('/addexpense',(req,res)=>
 {
@@ -155,13 +157,13 @@ route.post('/addfriend',upload.single("img"),(req,res)=>
     })
 })
 route.get('/codeverify', (req, res) => {
-	res.render('codeverify');
+	res.render('../Views/codeverify');
 })
 route.post("/forgot-password",forgotpass);
 route.post("/codeverify",codeverification );
 
 route.post('/allkhata', (req, res) => {
-	res.render('allkhata');
+	res.render('../Views/allkhata');
 })
 route.get('/allkhata', (req, res) => {
     
@@ -176,17 +178,17 @@ route.get('/allkhata', (req, res) => {
                 console.log(result3);
                 if (err) throw err;
 
-            res.render('allkhata',{item:result,data2:result3});
+            res.render('../Views/allkhata',{item:result,data2:result3});
             })
     
         })
  })
 route.get('/about', (req, res) => {
-	res.render('about');
+	res.render('../Views/about');
 })
 
 route.get('/home', (req, res) => {
-	res.render('home');
+	res.render('../Views/home');
 })
 
 route.get('/dashboard', (req, res) => {
@@ -206,7 +208,7 @@ route.get('/dashboard', (req, res) => {
                 console.log(result2);
                 if (err) throw err;
 
-            res.render('dashboard',{data:result2,item:result,data2:result3});
+            res.render('../Views/dashboard',{data:result2,item:result,data2:result3});
             })
     
         })
@@ -215,17 +217,17 @@ route.get('/dashboard', (req, res) => {
 	// res.render('dashboard');
 
 
-route.get('/', (req, res) => {
-	res.render('home');
-})
+// route.get('/', (req, res) => {
+// 	res.render('home');
+// })
 
 route.get('/login', (req, res) => {
-	res.render('login');
+	res.render('../Views/login');
 })
 
 route.get('/signup', (req, res) => {
 	
-    res.render('signup');
+    res.render('../Views/signup');
 })
 
 
@@ -247,16 +249,16 @@ route.post("/signup",upload.single("img"),(req,res)=>{
 });
 route.get('/contact', (req, res) => {
 	
-    res.render('contact_us');
+    res.render('../Views/contact_us');
 })
 
 route.get('/adminview', (req, res) => {
 	
-    res.render('adminview');
+    res.render('../Views/adminview');
 })
 route.get('/adminhome', (req, res) => {
 	
-    res.render('adminhome');
+    res.render('../Views/adminhome');
 })
 
 
@@ -278,7 +280,7 @@ route.get('/userview', (req, res) => {
         mysqlConnection.query(Query, function (err, result) {
             if (err) throw err;
             // res.send(result);
-            res.render("userview",
+            res.render("../Views/userview",
                 {
                     item: result,
                     pages: totalPages,
@@ -317,17 +319,18 @@ route.post('/', function(request, response) {
                 host_id=results[0].user_id;
                 host_name=results[0].username;
                 img=results[0].image;
+                log=true;
                 response.redirect("/dashboard");
             }}
             else {
-				response.render('login',{success:false})
+				response.render('../Views/login',{success:false})
 			
 
 			}			
 			response.end();
 		});
 	} else {
-				response.render('login',{success:false})
+				response.render('../Views/login',{success:false})
 		response.end();
 	}
 });
