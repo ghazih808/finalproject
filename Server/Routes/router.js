@@ -7,7 +7,7 @@ var nodemailer=require('nodemailer');
 // const functions = require("../controllers/index");
 const bodyParser = require("body-parser");
 const multer = require("multer");
-let host_id,host_name,host_img,log;
+let host_id,host_name,host_img,log,rating;
 //images storage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) { cb(null, "./Assets/Img") },
@@ -94,7 +94,33 @@ route.post('/feedback',(req,res)=>
     
     const H_id=host_id;
     const Name = host_name;
-    const rating=3;
+    if(rate-1==1)
+    {
+        rating=1;
+
+    }
+    if(rate-2==1)
+    {
+        rating=2;
+
+    }
+    if(rate-3==1)
+    {
+        rating=3;
+
+    }
+    if(rate-4==1)
+    {
+        rating=4;
+
+    }
+    if(rate-5==1)
+    {
+        rating=5;
+
+    }
+    console.log(rating);
+    // const rating;
     const feedbacks=req.body.comment;
     const Query = `INSERT INTO feedback (Host_id,name,rating,feedback) VALUES ('${H_id}','${Name}','${rating}','${feedbacks}')`;
     console.log('Query');
