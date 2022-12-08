@@ -91,34 +91,10 @@ route.get('/feedback', (req, res) => {
 })
 route.post('/feedback',(req,res)=>
 {
-    
+    console("feedback posting")
     const H_id=host_id;
     const Name = host_name;
-    if(rate-1==1)
-    {
-        rating=1;
-
-    }
-    if(rate-2==1)
-    {
-        rating=2;
-
-    }
-    if(rate-3==1)
-    {
-        rating=3;
-
-    }
-    if(rate-4==1)
-    {
-        rating=4;
-
-    }
-    if(rate-5==1)
-    {
-        rating=5;
-
-    }
+    rating=2;
     console.log(rating);
     // const rating;
     const feedbacks=req.body.comment;
