@@ -2,6 +2,7 @@ const { request, query } = require('express');
 //const e = require('express');
 const express = require('express');
 const route = express.Router();
+const{getHomeView, getfeedbackview, postfeedfunk,}=require("../Controller/index");
 const mysqlConnection = require('../Database/connection');
 var nodemailer=require('nodemailer');
 // const functions = require("../controllers/index");
@@ -83,28 +84,9 @@ const codeverification=(req,res)=>
 route.get('/forgot-password', (req, res) => {
 	res.render('../Views/forgotpass');
 })
-route.get('/', (req, res) => {
-	res.render('../Views/home');
-})
-route.get('/feedback', (req, res) => {
-	res.render('../Views/feedback');
-})
-route.post('/feedback',(req,res)=>
-{
-    console("feedback posting")
-    const H_id=host_id;
-    const Name = host_name;
-    rating=2;
-    console.log(rating);
-    // const rating;
-    const feedbacks=req.body.comment;
-    const Query = `INSERT INTO feedback (Host_id,name,rating,feedback) VALUES ('${H_id}','${Name}','${rating}','${feedbacks}')`;
-    console.log('Query');
-    mysqlConnection.query(Query, function (err, result) {
-        if (err) throw err;
-        res.redirect("/dashboard");
-    })
-})
+route.get('/',getHomeView)
+route.get('/feedback', getfeedbackview)
+route.post('/feedback',postfeedfunk)
 route.get('/addexpense', (req, res) => {
 	res.render('../Views/addexpense');
 })
@@ -189,9 +171,7 @@ route.get('/about', (req, res) => {
 	res.render('../Views/about');
 })
 
-route.get('/home', (req, res) => {
-	res.render('../Views/home');
-})
+route.get('/home',getHomeView)
 
 route.get('/dashboard', (req, res) => {
     

@@ -1,44 +1,23 @@
-/*const express = require("express");
-const route = express.Router();
-const bodyParser = require("body-parser");
-const multer = require("multer");
-//const cookieParser = require("cookie-parser");
-//const session = require('express-session');
-//const Auth = require("../middleware/auth.js");
-//const pdf = require("html-pdf");
-//const fs = require("fs");
-//const options = { format: "A4" };
-//const nodemailer = require("nodemailer");
-//const path = require("path");
-
-
-//user view
-const userview= (req, res) => {
-    const dataCountQuery = "SELECT COUNT(*) FROM users";
-    connection.query(dataCountQuery, function (err, result) {
-        if (err) throw err;
-
-        let dataCount = result[0]["COUNT(*)"];
-        let pageNo = req.query.page ? req.query.page : 1;
-        let dataPerPages = req.query.data ? req.query.data : 3;
-        let startLimit = (pageNo - 1) * dataPerPages;
-        let totalPages = Math.ceil(dataCount / dataPerPages);
-
-        // console.log(dataCount, "\n", pageNo, "\n",dataPerPages, "\n",startLimit, "\n",totalPages, "\n");
-
-        const Query = `SELECT * FROM users LIMIT ${startLimit}, ${dataPerPages}`;
-        connection.query(Query, function (err, result) {
-            if (err) throw err;
-            // res.send(result);
-            res.render("userview",
-                {
-                    data: result,
-                    pages: totalPages,
-                    CurrentPage: pageNo,
-                    lastPage: totalPages
-                }
-            );
-        })
-    });
+exports.getHomeView=(req, res) => {
+    console.log("from controller")
+	res.render('../Views/home');
 }
-*/
+exports.getfeedbackview=(req, res) => {
+	res.render('../Views/feedback');
+}
+exports.postfeedfunk=(req,res)=>
+{
+    console("feedback posting")
+    const H_id=host_id;
+    const Name = host_name;
+    rating=2;
+    console.log(rating);
+    // const rating;
+    const feedbacks=req.body.comment;
+    const Query = `INSERT INTO feedback (Host_id,name,rating,feedback) VALUES ('${H_id}','${Name}','${rating}','${feedbacks}')`;
+    console.log('Query');
+    mysqlConnection.query(Query, function (err, result) {
+        if (err) throw err;
+        res.redirect("/dashboard");
+    })
+}
