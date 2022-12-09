@@ -19,4 +19,9 @@ app.use('/Img',express.static(path.resolve(__dirname,"Assets/Img")))
 app.use('/',require('./Server/Routes/router'))
 
 
-app.listen(process.env.PORT ||3002 , () => { console.log(`Server is running on http://localhost:${3002}`) });
+
+
+
+
+
+app.listen(process.env.PORT ||3003 , () => { console.log(`Server is running on http://localhost:${3003}`) });

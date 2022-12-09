@@ -81,6 +81,13 @@ const codeverification=(req,res)=>
     })
 }
 
+
+
+route.get('/chat', (req, res) => {
+	res.render('chat');
+})
+
+
 route.get('/forgot-password', (req, res) => {
 	res.render('../Views/forgotpass');
 })
@@ -124,7 +131,7 @@ route.post('/addexpense',(req,res)=>
     const Query = `INSERT INTO expense (Host_id,name,amount,status) VALUES ('${H_id}','${Name}','${amount}','${status}')`;
     mysqlConnection.query(Query, function (err, result) {
         if (err) throw err;
-        res.redirect("/dashboard");
+        res.redirect("../Views/dashboard");
     })
 })
 route.post('/addfriend',upload.single("img"),(req,res)=>
