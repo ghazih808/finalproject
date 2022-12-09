@@ -105,7 +105,7 @@ route.post('/settleup',(req,res)=>
     
     const H_id=req.body.id;
     const Name = req.body.name;
-    const status= "PAID";
+    const status=req.body.status;
     const Query = `UPDATE expense SET status = '${status}' WHERE name = '${Name}' AND Host_id='${H_id}'`;
     console.log(Query);
     mysqlConnection.query(Query, function (err, result) {
@@ -126,7 +126,7 @@ route.post('/addexpense',(req,res)=>
     const H_id=req.body.id;
     const Name = req.body.name;
     const amount=req.body.amount;
-    const status="UNPAID";
+    const status=req.body.status;
 
     const Query = `INSERT INTO expense (Host_id,name,amount,status) VALUES ('${H_id}','${Name}','${amount}','${status}')`;
     mysqlConnection.query(Query, function (err, result) {
