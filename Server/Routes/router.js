@@ -131,7 +131,7 @@ route.post('/addexpense',(req,res)=>
     const Query = `INSERT INTO expense (Host_id,name,amount,status) VALUES ('${H_id}','${Name}','${amount}','${status}')`;
     mysqlConnection.query(Query, function (err, result) {
         if (err) throw err;
-        res.redirect("../Views/dashboard");
+        res.redirect("/dashboard");
     })
 })
 route.post('/addfriend',upload.single("img"),(req,res)=>
